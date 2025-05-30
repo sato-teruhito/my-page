@@ -1,26 +1,193 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/* ベーススタイル */
+@layer base {
+  * {
+    @apply transition-colors;
+  }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  html {
+    scroll-behavior: smooth;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* カスタムコンポーネント */
+@layer components {
+  /* カードホバーエフェクト */
+  .card-hover {
+    @apply transition-all duration-300 ease-out transform;
+  }
+
+  .card-hover:hover {
+    @apply -translate-y-2 shadow-2xl;
+  }
+
+  /* ボタンホバーエフェクト */
+  .button-hover {
+    @apply transition-all duration-200 ease-out transform;
+  }
+
+  .button-hover:hover {
+    @apply scale-105 shadow-lg;
+  }
+
+  /* ナビゲーションアンダーライン */
+  .nav-underline {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .nav-underline::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+  }
+
+  .nav-underline:hover::after {
+    width: 100%;
+  }
+
+  /* グラデーションアニメーション */
+  .gradient-animation {
+    background-size: 200% 200%;
+    animation: gradientShift 3s ease infinite;
+  }
+}
+
+/* カスタムユーティリティ */
+@layer utilities {
+  /* アニメーション */
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.5s ease-out;
+  }
+
+  .animate-bounce-gentle {
+    animation: bounceGentle 2s infinite;
+  }
+
+  .animate-pulse-slow {
+    animation: pulse 3s infinite;
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  /* アニメーション遅延 */
+  .animation-delay-100 {
+    animation-delay: 100ms;
+  }
+
+  .animation-delay-200 {
+    animation-delay: 200ms;
+  }
+
+  .animation-delay-300 {
+    animation-delay: 300ms;
+  }
+
+  /* スケール値 */
+  .scale-102 {
+    transform: scale(1.02);
+  }
+
+  .scale-105 {
+    transform: scale(1.05);
+  }
+
+  /* トランジション */
+  .transition-height {
+    transition-property: height;
+  }
+
+  .transition-spacing {
+    transition-property: margin, padding;
+  }
+
+  .duration-400 {
+    transition-duration: 400ms;
+  }
+
+  .duration-600 {
+    transition-duration: 600ms;
+  }
+
+  .ease-bounce-in {
+    transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+}
+
+/* キーフレーム定義 */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bounceGentle {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
 }
