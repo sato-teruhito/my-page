@@ -11,8 +11,8 @@ const blogPosts = [
     date: "2024年1月15日",
     category: "技術",
     readTime: "5分",
-    gradient: "from-blue-500 to-purple-600",
-    imageUrl: null, // 画像がない場合はnull
+    gradient: "gradient-blue-purple",
+    imageUrl: null,
   },
   {
     id: 2,
@@ -21,7 +21,7 @@ const blogPosts = [
     date: "2024年1月12日",
     category: "デザイン",
     readTime: "8分",
-    gradient: "from-pink-500 to-rose-600",
+    gradient: "gradient-pink-rose",
     imageUrl: null,
   },
   {
@@ -31,7 +31,7 @@ const blogPosts = [
     date: "2024年1月10日",
     category: "開発",
     readTime: "12分",
-    gradient: "from-emerald-500 to-teal-600",
+    gradient: "gradient-emerald-teal",
     imageUrl: null,
   },
   {
@@ -41,7 +41,7 @@ const blogPosts = [
     date: "2024年1月8日",
     category: "UX",
     readTime: "6分",
-    gradient: "from-orange-500 to-red-600",
+    gradient: "gradient-orange-red",
     imageUrl: null,
   },
   {
@@ -51,7 +51,7 @@ const blogPosts = [
     date: "2024年1月5日",
     category: "最適化",
     readTime: "10分",
-    gradient: "from-indigo-500 to-blue-600",
+    gradient: "gradient-indigo-purple",
     imageUrl: null,
   },
   {
@@ -61,7 +61,7 @@ const blogPosts = [
     date: "2024年1月3日",
     category: "アクセシビリティ",
     readTime: "7分",
-    gradient: "from-violet-500 to-purple-600",
+    gradient: "gradient-violet-purple",
     imageUrl: null,
   },
 ]
@@ -70,7 +70,6 @@ export default function BlogPage() {
   const [hoveredCard, setHoveredCard] = useState<number | null>(null)
   const [visiblePosts, setVisiblePosts] = useState<number[]>([])
 
-  // 順番にカードを表示するアニメーション効果
   useEffect(() => {
     const timer = setTimeout(() => {
       const allPosts = blogPosts.map((post) => post.id)
@@ -108,16 +107,14 @@ export default function BlogPage() {
             >
               <div className="h-48 relative overflow-hidden">
                 {post.imageUrl ? (
-                  // 画像がある場合
-                  <div
-                    className="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-300"
-                    style={{ backgroundImage: `url(${post.imageUrl})` }}
-                  >
-                    <div className="absolute inset-0 bg-black bg-opacity-20 transition-opacity duration-300 group-hover:bg-opacity-10"></div>
-                  </div>
+                  <img
+                    src={post.imageUrl || "/placeholder.svg"}
+                    alt={post.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    crossOrigin="anonymous"
+                  />
                 ) : (
-                  // 画像がない場合はグラデーション
-                  <div className={`w-full h-full bg-gradient-to-br ${post.gradient} relative`}>
+                  <div className={`w-full h-full ${post.gradient} relative`}>
                     <div className="absolute inset-0 bg-black bg-opacity-20 transition-opacity duration-300 group-hover:bg-opacity-10"></div>
                   </div>
                 )}

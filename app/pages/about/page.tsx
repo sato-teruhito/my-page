@@ -11,23 +11,23 @@ export default function AboutPage() {
 
   const experiences = [
     {
-      year: "2024 - 現在",
+      year: "2025 - 現在",
       title: "和歌山大学大学院 システム工学研究科",
-      description: "機械学習とデータサイエンスを専攻し、研究に取り組んでいます。",
+      description: "コミュニケーションに関する研究に取り組んでいます。",
       gradient: "from-blue-500 to-purple-500",
       icon: "🎓",
     },
     {
-      year: "2023 - 現在",
-      title: "add. メンバー",
-      description: "学生団体add.でWebアプリケーション開発やイベント企画に参加しています。",
+      year: "2024 - 現在",
+      title: "add。 メンバー",
+      description: "学生団体add。でWebアプリケーション開発やイベント企画に参加しています。",
       gradient: "from-purple-500 to-pink-500",
       icon: "👥",
     },
     {
-      year: "2020 - 2024",
+      year: "2021 - 2025",
       title: "和歌山大学 システム工学部",
-      description: "情報通信システム学科でプログラミングとシステム設計の基礎を学びました。",
+      description: "システム工学部でプログラミングとシステム設計の基礎を学びました。",
       gradient: "from-emerald-500 to-teal-500",
       icon: "🏫",
     },
@@ -35,37 +35,37 @@ export default function AboutPage() {
 
   const techStacks = {
     frontend: [
-      { name: "React", level: 4, color: "from-blue-500 to-cyan-500" },
-      { name: "Next.js", level: 3, color: "from-gray-700 to-gray-900" },
+      { name: "React", level: 3, color: "from-blue-500 to-cyan-500" },
+      { name: "Next.js", level: 4, color: "from-gray-700 to-gray-900" },
       { name: "TypeScript", level: 3, color: "from-blue-600 to-blue-800" },
       { name: "Tailwind CSS", level: 4, color: "from-teal-500 to-green-500" },
       { name: "HTML/CSS", level: 5, color: "from-orange-500 to-red-500" },
       { name: "JavaScript", level: 4, color: "from-yellow-500 to-orange-500" },
     ],
     backend: [
-      { name: "Python", level: 4, color: "from-yellow-500 to-orange-500" },
+      { name: "Python", level: 1, color: "from-yellow-500 to-orange-500" },
       { name: "Node.js", level: 3, color: "from-green-600 to-green-800" },
-      { name: "FastAPI", level: 3, color: "from-teal-600 to-cyan-600" },
-      { name: "PostgreSQL", level: 2, color: "from-blue-700 to-indigo-700" },
-      { name: "MongoDB", level: 2, color: "from-green-700 to-emerald-700" },
+      { name: "FastAPI", level: 0, color: "from-teal-600 to-cyan-600" },
+      { name: "PostgreSQL", level: 0, color: "from-blue-700 to-indigo-700" },
+      { name: "Supabase", level: 2, color: "from-green-700 to-emerald-700" },
     ],
     tools: [
       { name: "Git/GitHub", level: 4, color: "from-gray-700 to-gray-900" },
-      { name: "Docker", level: 2, color: "from-blue-600 to-cyan-600" },
+      { name: "Slack", level: 4, color: "from-blue-600 to-cyan-600" },
       { name: "VS Code", level: 5, color: "from-blue-500 to-purple-500" },
       { name: "Figma", level: 3, color: "from-purple-500 to-pink-500" },
-      { name: "Jupyter", level: 4, color: "from-orange-500 to-red-500" },
-      { name: "Streamlit", level: 3, color: "from-red-500 to-pink-500" },
+      { name: "Discord", level: 4, color: "from-orange-500 to-red-500" },
+      { name: "vercel", level: 3, color: "from-red-500 to-pink-500" },
     ],
   }
 
   const hobbies = [
-    { name: "読書", icon: "📚", description: "技術書からビジネス書まで" },
-    { name: "カフェ巡り", icon: "☕", description: "美味しいコーヒーを求めて" },
-    { name: "写真", icon: "📸", description: "風景や日常の瞬間を切り取る" },
-    { name: "音楽", icon: "🎵", description: "ジャズからポップスまで幅広く" },
-    { name: "映画鑑賞", icon: "🎬", description: "SF映画が特に好き" },
-    { name: "散歩", icon: "🚶", description: "新しい発見を求めて街を歩く" },
+    { name: "ゲーム", icon: "🎮", description: "特にDQシリーズをこよなく愛する" },
+    { name: "バスケットボール", icon: "🏀", description: "小中高とバスケ部" },
+    { name: "アニメ", icon: "📺", description: "jojoは人生のバイブル" },
+    { name: "ジム", icon: "💪", description: "おなか結構やばい" },
+    { name: "音楽", icon: "🎵", description: "好きなアーティストのliveに行きたい" },
+    { name: "ギター", icon: "🎸", description: "アコギだし最近弾けてない" },
   ]
 
   // 5段階評価の星を生成する関数
@@ -89,7 +89,7 @@ export default function AboutPage() {
             About Me
           </h1>
           <p className="mt-6 text-lg sm:text-xl leading-8 text-gray-600 max-w-2xl mx-auto animate-slide-up animation-delay-200">
-            佐藤照仁について
+            私について
           </p>
         </div>
 
@@ -105,12 +105,13 @@ export default function AboutPage() {
               <div className="w-48 h-48 rounded-2xl bg-gradient-to-r from-blue-500 to-purple-500 p-1">
                 <div className="w-full h-full rounded-2xl bg-white flex items-center justify-center">
                   <div className="text-center text-gray-500">
-                    <div className="text-4xl mb-2">📷</div>
+                    {/*<div className="text-4xl mb-2">📷</div>
                     <p className="text-sm">顔写真</p>
-                    <p className="text-xs opacity-70">後で追加予定</p>
+                    <p className="text-xs opacity-70">後で追加予定</p>*/}
                     {/* 顔写真を使用する場合:
                         public/images/profile/profile-photo.jpg として保存し、
                         <img src="/images/profile/profile-photo.jpg" alt="佐藤照仁" className="w-full h-full object-cover rounded-2xl" /> */}
+                    <img src="/images/profile/profile-photo.jpg" alt="佐藤照仁" className="w-full h-full object-cover rounded-2xl" />
                   </div>
                 </div>
               </div>
@@ -125,11 +126,11 @@ export default function AboutPage() {
                 </div>
                 <div>
                   <h3 className="text-lg font-semibold text-gray-900">在籍</h3>
-                  <p className="text-gray-600">和歌山大学大学院システム工学研究科</p>
+                  <p className="text-gray-600">和歌山大学大学院<br/>システム工学研究科</p>
                 </div>
                 <div>
                   <h3 className="text-lg font-semibold text-gray-900">所属団体</h3>
-                  <p className="text-gray-600">add.</p>
+                  <p className="text-gray-600">add。</p>
                 </div>
               </div>
             </div>
@@ -306,12 +307,12 @@ export default function AboutPage() {
                 <div className="flex-1">
                   <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
                     <h3 className="text-lg font-semibold text-gray-900 group-hover:text-orange-600 transition-colors duration-200">
-                      学内プログラミングコンテスト
+                      学内アイデアコンテスト
                     </h3>
-                    <span className="text-sm text-gray-500 font-medium">2024年3月</span>
+                    <span className="text-sm text-gray-500 font-medium">2024年12月</span>
                   </div>
                   <p className="text-gray-600 leading-relaxed">
-                    和歌山大学主催のプログラミングコンテストで優秀賞を受賞。チーム開発でWebアプリケーションを制作しました。
+                    和歌山大学主催のアイデアコンテスト・キャンパス部門で優秀賞を受賞。チームで学内の実験協力者募集に特化した掲示板アプリを提案しました。
                   </p>
                 </div>
               </div>
@@ -320,36 +321,17 @@ export default function AboutPage() {
             <div className="group p-6 rounded-xl bg-gradient-to-r from-blue-50 to-purple-50 border border-blue-200 hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
               <div className="flex items-start space-x-4">
                 <div className="w-12 h-12 bg-gradient-to-r from-blue-400 to-purple-500 rounded-xl flex items-center justify-center text-xl flex-shrink-0">
-                  🎓
+                  🏆
                 </div>
                 <div className="flex-1">
                   <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
                     <h3 className="text-lg font-semibold text-gray-900 group-hover:text-purple-600 transition-colors duration-200">
-                      学部優秀学生表彰
+                      ハッカソン技育キャンプCAMP2024
                     </h3>
-                    <span className="text-sm text-gray-500 font-medium">2024年3月</span>
+                    <span className="text-sm text-gray-500 font-medium">2025年2月</span>
                   </div>
                   <p className="text-gray-600 leading-relaxed">
-                    システム工学部において、学業成績および研究活動が評価され優秀学生として表彰されました。
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div className="group p-6 rounded-xl bg-gradient-to-r from-green-50 to-teal-50 border border-green-200 hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
-              <div className="flex items-start space-x-4">
-                <div className="w-12 h-12 bg-gradient-to-r from-green-400 to-teal-500 rounded-xl flex items-center justify-center text-xl flex-shrink-0">
-                  📜
-                </div>
-                <div className="flex-1">
-                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
-                    <h3 className="text-lg font-semibold text-gray-900 group-hover:text-teal-600 transition-colors duration-200">
-                      基本情報技術者試験 合格
-                    </h3>
-                    <span className="text-sm text-gray-500 font-medium">2023年11月</span>
-                  </div>
-                  <p className="text-gray-600 leading-relaxed">
-                    情報処理技術者試験の基本情報技術者試験に合格。ITの基礎知識とプログラミング能力を証明しました。
+                    サポーターズ主催のハッカソン技育キャンプCAMP2024【Vol.23】で最優秀賞を受賞。chrome拡張機能「PUMP」を発表しました。
                   </p>
                 </div>
               </div>
@@ -363,10 +345,11 @@ export default function AboutPage() {
               今後の目標
             </h3>
             <ul className="text-gray-600 space-y-2 text-sm">
-              <li>• 応用情報技術者試験の取得</li>
-              <li>• 国際学会での研究発表</li>
-              <li>• オープンソースプロジェクトへの貢献</li>
-              <li>• 技術ブログでの情報発信強化</li>
+              <li>• 基本情報技術者試験の取得</li>
+              <li>• 情報処理学会での研究発表</li>
+              <li>• 個人開発による技術力向上</li>
+              <li>• チーム開発による実務経験</li>
+              <li>• 修士研究</li>
             </ul>
           </div>
         </div>

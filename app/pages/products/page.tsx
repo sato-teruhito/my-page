@@ -11,10 +11,10 @@ const works = [
     technologies: ["Next.js", "TypeScript", "Supabase", "Tailwind CSS"],
     category: "Web Application",
     year: "2024",
-    gradient: "from-blue-500 to-cyan-500",
+    gradient: "gradient-blue-purple",
     featured: true,
     githubUrl: "https://github.com/yourusername/learning-management-system",
-    status: "completed", // completed, in-progress, paused
+    status: "completed",
   },
   {
     id: 2,
@@ -23,7 +23,7 @@ const works = [
     technologies: ["Python", "Streamlit", "Pandas", "Plotly"],
     category: "Data Analysis",
     year: "2024",
-    gradient: "from-purple-500 to-pink-500",
+    gradient: "gradient-purple-pink",
     featured: false,
     githubUrl: "https://github.com/yourusername/data-analysis-dashboard",
     status: "in-progress",
@@ -36,7 +36,7 @@ const works = [
     technologies: ["Next.js", "TypeScript", "Tailwind CSS"],
     category: "Portfolio",
     year: "2024",
-    gradient: "from-emerald-500 to-teal-500",
+    gradient: "gradient-emerald-teal",
     featured: false,
     githubUrl: "https://github.com/yourusername/portfolio-site",
     status: "completed",
@@ -48,7 +48,7 @@ const works = [
     technologies: ["Python", "OpenAI API", "Flask", "React"],
     category: "AI Application",
     year: "2023",
-    gradient: "from-red-500 to-orange-500",
+    gradient: "gradient-orange-red",
     featured: true,
     githubUrl: "https://github.com/yourusername/university-chatbot",
     status: "paused",
@@ -60,7 +60,7 @@ const works = [
     technologies: ["React", "Node.js", "MongoDB", "Express"],
     category: "Management System",
     year: "2023",
-    gradient: "from-indigo-500 to-purple-500",
+    gradient: "gradient-indigo-purple",
     featured: false,
     githubUrl: "https://github.com/yourusername/lab-management-app",
     status: "in-progress",
@@ -72,14 +72,13 @@ const works = [
     technologies: ["Python", "TensorFlow", "OpenCV", "Jupyter"],
     category: "Machine Learning",
     year: "2023",
-    gradient: "from-green-500 to-blue-500",
+    gradient: "gradient-green-blue",
     featured: false,
     githubUrl: "https://github.com/yourusername/plant-classification-ml",
     status: "completed",
   },
 ]
 
-// ステータスタグを生成する関数
 const getStatusTag = (status: string) => {
   const statusConfig = {
     completed: { label: "完成", color: "bg-green-100 text-green-800", icon: "✅" },
@@ -144,7 +143,7 @@ export default function WorksPage() {
                 </div>
               )}
 
-              <div className={`h-48 bg-gradient-to-r ${work.gradient} relative overflow-hidden`}>
+              <div className={`h-48 ${work.gradient} relative overflow-hidden`}>
                 <div className="absolute inset-0 bg-black bg-opacity-10 transition-opacity duration-300 group-hover:bg-opacity-5"></div>
                 <div className="absolute top-4 left-4 space-y-2">
                   <span className="bg-white bg-opacity-90 text-gray-800 px-3 py-1 rounded-full text-sm font-medium">
@@ -184,7 +183,7 @@ export default function WorksPage() {
 
                 <div className="flex gap-3">
                   <button
-                    className={`flex-1 bg-gradient-to-r ${work.gradient} text-white py-3 px-4 rounded-xl font-semibold shadow-lg button-hover`}
+                    className={`flex-1 ${work.gradient} text-white py-3 px-4 rounded-xl font-semibold shadow-lg button-hover`}
                   >
                     詳細を見る
                   </button>

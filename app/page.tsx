@@ -14,19 +14,19 @@ export default function HomePage() {
       title: "ユーザーファースト",
       description: "常にユーザーの視点に立ち、使いやすく価値のあるプロダクトを作ることを心がけています。",
       icon: "👥",
-      gradient: "from-blue-500 to-cyan-500",
+      gradient: "gradient-blue-purple",
     },
     {
       title: "継続的な学習",
       description: "技術の進歩は早く、常に新しいことを学び続けることで成長していきたいと考えています。",
       icon: "📚",
-      gradient: "from-purple-500 to-pink-500",
+      gradient: "gradient-purple-pink",
     },
     {
       title: "チームワーク",
       description: "一人では成し遂げられないことも、チームで協力することで大きな成果を生み出せると信じています。",
       icon: "🤝",
-      gradient: "from-emerald-500 to-teal-500",
+      gradient: "gradient-emerald-teal",
     },
   ]
 
@@ -35,36 +35,25 @@ export default function HomePage() {
       title: "学習管理システム",
       description: "大学の課題管理とスケジュール管理を効率化するWebアプリケーション",
       tech: ["Next.js", "TypeScript", "Supabase"],
-      gradient: "from-purple-500 to-pink-500",
+      gradient: "gradient-purple-pink",
       year: "2024",
-      imageUrl: null, // 画像がない場合はnull
-      // 画像を使用する場合の例:
-      // imageUrl: "/images/projects/learning-management-system.jpg"
-      // 画像フォルダ構造:
-      // public/
-      //   images/
-      //     projects/
-      //       learning-management-system.jpg
-      //       data-dashboard.jpg
-      //       portfolio-site.jpg
+      imageUrl: null,
     },
     {
       title: "データ分析ダッシュボード",
       description: "Pythonを使用した学習データの可視化ツール",
       tech: ["Python", "Streamlit", "Pandas"],
-      gradient: "from-blue-500 to-indigo-500",
+      gradient: "gradient-blue-indigo",
       year: "2024",
       imageUrl: null,
-      // imageUrl: "/images/projects/data-dashboard.jpg"
     },
     {
       title: "ポートフォリオサイト",
       description: "このサイト自体も制作物の一つです",
       tech: ["Next.js", "Tailwind CSS", "TypeScript"],
-      gradient: "from-emerald-500 to-teal-500",
+      gradient: "gradient-emerald-teal",
       year: "2024",
       imageUrl: null,
-      // imageUrl: "/images/projects/portfolio-site.jpg"
     },
   ]
 
@@ -73,36 +62,41 @@ export default function HomePage() {
       {/* ヒーロー画像セクション */}
       <div className="relative h-96 sm:h-[500px] overflow-hidden">
         <div
-          className={`w-full h-full bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 relative ${isLoaded ? "animate-fade-in" : "opacity-0"}`}
+          className={`w-full h-full relative ${isLoaded ? "animate-fade-in" : "opacity-0"}`}
           style={{ animationDelay: "100ms" }}
         >
-          {/* プレースホルダー画像 */}
-          <div className="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center">
-            <div className="text-center text-white">
-              <div className="text-6xl sm:text-8xl mb-4">📸</div>
-              <p className="text-lg sm:text-xl font-medium">自分を表す写真がここに入ります</p>
-              <p className="text-sm sm:text-base opacity-80 mt-2">横長の画像推奨</p>
-              {/* ヒーロー画像を使用する場合:
-                  public/images/hero/main-hero.jpg として保存し、
-                  backgroundImage: `url('/images/hero/main-hero.jpg')` で指定 */}
-            </div>
-          </div>
+          {/* ヒーロー画像 */}
+          <div
+            className="w-full h-full bg-cover bg-center"
+            style={{
+              backgroundImage:
+                "url('/images/hero/main-hero.jpg')",
+            }}
+            role="img"
+            aria-label="和歌山の美しい自然風景"
+          ></div>
+
+          {/* オーバーレイ */}
+          <div className="absolute inset-0 bg-black bg-opacity-40"></div>
 
           {/* オーバーレイテキスト */}
-          <div className="absolute bottom-8 left-8 text-white">
+          <div className="absolute bottom-8 left-8 text-white z-10">
             <h1
-              className={`text-3xl sm:text-5xl font-bold mb-2 ${isLoaded ? "animate-slide-up" : "opacity-0"}`}
+              className={`text-3xl sm:text-5xl font-bold mb-2 drop-shadow-lg ${isLoaded ? "animate-slide-up" : "opacity-0"}`}
               style={{ animationDelay: "300ms" }}
             >
               佐藤照仁
             </h1>
             <p
-              className={`text-lg sm:text-xl opacity-90 ${isLoaded ? "animate-slide-up" : "opacity-0"}`}
+              className={`text-lg sm:text-xl opacity-90 drop-shadow-md ${isLoaded ? "animate-slide-up" : "opacity-0"}`}
               style={{ animationDelay: "400ms" }}
             >
               Student Engineer
             </p>
           </div>
+
+          {/* 右下に小さなクレジット */}
+          <div className="absolute bottom-4 right-4 text-white text-xs opacity-70">📍 和歌山</div>
         </div>
       </div>
 
@@ -148,7 +142,7 @@ export default function HomePage() {
               >
                 <div className="text-center">
                   <div
-                    className={`w-16 h-16 bg-gradient-to-r ${principle.gradient} rounded-2xl flex items-center justify-center mx-auto mb-6 icon-hover`}
+                    className={`w-16 h-16 ${principle.gradient} rounded-2xl flex items-center justify-center mx-auto mb-6 icon-hover`}
                   >
                     <span className="text-2xl">{principle.icon}</span>
                   </div>
@@ -187,25 +181,25 @@ export default function HomePage() {
                 title: "UI/UX デザイン",
                 description: "ユーザー体験を重視したインターフェース設計",
                 icon: "🎨",
-                gradient: "from-pink-500 to-rose-500",
+                gradient: "gradient-pink-rose",
               },
               {
                 title: "モダンフレームワーク",
                 description: "React, Next.js, Vue.jsなどの最新技術",
                 icon: "⚛️",
-                gradient: "from-blue-500 to-cyan-500",
+                gradient: "gradient-blue-purple",
               },
               {
                 title: "パフォーマンス最適化",
                 description: "高速で効率的なWebアプリケーション",
                 icon: "⚡",
-                gradient: "from-yellow-500 to-orange-500",
+                gradient: "gradient-yellow-orange",
               },
               {
                 title: "アクセシビリティ",
                 description: "すべてのユーザーが使いやすいWeb",
                 icon: "♿",
-                gradient: "from-green-500 to-emerald-500",
+                gradient: "gradient-emerald-teal",
               },
             ].map((area, index) => (
               <div
@@ -215,7 +209,7 @@ export default function HomePage() {
               >
                 <div className="text-center">
                   <div
-                    className={`w-16 h-16 bg-gradient-to-r ${area.gradient} rounded-2xl flex items-center justify-center mx-auto mb-4 icon-hover`}
+                    className={`w-16 h-16 ${area.gradient} rounded-2xl flex items-center justify-center mx-auto mb-4 icon-hover`}
                   >
                     <span className="text-2xl">{area.icon}</span>
                   </div>
@@ -257,16 +251,14 @@ export default function HomePage() {
               >
                 <div className="h-48 relative overflow-hidden">
                   {work.imageUrl ? (
-                    // 画像がある場合
-                    <div
-                      className="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-300"
-                      style={{ backgroundImage: `url(${work.imageUrl})` }}
-                    >
-                      <div className="absolute inset-0 bg-black bg-opacity-30 group-hover:bg-opacity-20 transition-opacity duration-300"></div>
-                    </div>
+                    <img
+                      src={work.imageUrl || "/placeholder.svg"}
+                      alt={work.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      crossOrigin="anonymous"
+                    />
                   ) : (
-                    // 画像がない場合はグラデーション（確実に表示されるように修正）
-                    <div className={`w-full h-full bg-gradient-to-br ${work.gradient} relative`}>
+                    <div className={`w-full h-full ${work.gradient} relative`}>
                       <div className="absolute inset-0 bg-black bg-opacity-20 group-hover:bg-opacity-10 transition-opacity duration-300"></div>
                     </div>
                   )}

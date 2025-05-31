@@ -186,6 +186,47 @@
     border-radius: calc(var(--radius) - 4px);
   }
 
+  /* カスタムグラデーション（Tailwind CSS 4対応） */
+  .gradient-blue-purple {
+    background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+  }
+
+  .gradient-purple-pink {
+    background: linear-gradient(135deg, #8b5cf6, #ec4899);
+  }
+
+  .gradient-emerald-teal {
+    background: linear-gradient(135deg, #10b981, #14b8a6);
+  }
+
+  .gradient-blue-indigo {
+    background: linear-gradient(135deg, #3b82f6, #6366f1);
+  }
+
+  .gradient-pink-rose {
+    background: linear-gradient(135deg, #ec4899, #f43f5e);
+  }
+
+  .gradient-orange-red {
+    background: linear-gradient(135deg, #f97316, #ef4444);
+  }
+
+  .gradient-indigo-purple {
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  }
+
+  .gradient-green-blue {
+    background: linear-gradient(135deg, #22c55e, #3b82f6);
+  }
+
+  .gradient-yellow-orange {
+    background: linear-gradient(135deg, #eab308, #f97316);
+  }
+
+  .gradient-violet-purple {
+    background: linear-gradient(135deg, #8b5cf6, #a855f7);
+  }
+
   /* カードホバーエフェクト */
   .card-hover {
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
