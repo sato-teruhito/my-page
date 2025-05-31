@@ -14,7 +14,7 @@ export default function Footer() {
             <div className="col-span-1 md:col-span-2">
               <Link href="/" className="flex items-center mb-4 group">
                 <div className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent group-hover:from-purple-400 group-hover:to-pink-400 transition-all duration-300">
-                  🍵 TeRoom
+                  ☀ TeRoom 💫
                 </div>
               </Link>
               <p className="text-gray-300 text-sm leading-relaxed max-w-md mb-6">
@@ -24,7 +24,7 @@ export default function Footer() {
               {/* ソーシャルリンク */}
               <div className="flex space-x-4">
                 <a
-                  href="https://github.com/yourusername"
+                  href="https://github.com/sato-teruhito"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-gray-400 hover:text-white transition-colors duration-200 transform hover:scale-110"
@@ -34,7 +34,7 @@ export default function Footer() {
                   </svg>
                 </a>
                 <a
-                  href="https://instagram.com/yourusername"
+                  href="https://www.instagram.com/teru_31_dq/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-gray-400 hover:text-pink-400 transition-colors duration-200 transform hover:scale-110"
@@ -44,7 +44,7 @@ export default function Footer() {
                   </svg>
                 </a>
                 <a
-                  href="mailto:your.email@example.com"
+                  href="mailto:s266126@wakayama-u.ac.jp"
                   className="text-gray-400 hover:text-blue-400 transition-colors duration-200 transform hover:scale-110"
                 >
                   <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -109,7 +109,7 @@ export default function Footer() {
                 <li>React / Next.js</li>
                 <li>TypeScript</li>
                 <li>Python</li>
-                <li>Machine Learning</li>
+                <li>Supabase</li>
               </ul>
             </div>
           </div>
@@ -117,7 +117,7 @@ export default function Footer() {
           {/* コピーライト */}
           <div className="mt-12 pt-8 border-t border-gray-700">
             <p className="text-center text-gray-400 text-sm">
-              © 2024 佐藤照仁 (TeRoom). All rights reserved. Made with ❤️
+              © 2024 Sato Teruhito. All rights reserved. Made with ❤️
             </p>
           </div>
         </div>

@@ -14,14 +14,14 @@ export default function ContactPage() {
       icon: "📧",
       title: "Email",
       description: "お気軽にメールでお問い合わせください",
-      contact: "teruhito.sato@example.com",
+      contact: "s266126@wakayama-u.ac.jp",
       gradient: "from-blue-500 to-cyan-500",
     },
     {
       icon: "💬",
       title: "SNS",
       description: "SNSでもお気軽にご連絡ください",
-      contact: "@teruhito_sato",
+      contact: "https://www.instagram.com/teru_31_dq/",
       gradient: "from-purple-500 to-pink-500",
     },
     {

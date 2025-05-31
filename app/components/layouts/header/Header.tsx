@@ -46,7 +46,7 @@ export default function Header() {
           <div className="flex-shrink-0">
             <Link href="/" className="flex items-center group">
               <div className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent group-hover:from-purple-600 group-hover:to-pink-600 transition-all duration-500 transform group-hover:scale-105">
-                🍵 TeRoom
+                ☀ TeRoom 💫
               </div>
             </Link>
           </div>

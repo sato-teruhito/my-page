@@ -97,7 +97,7 @@ export default function HomePage() {
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
           <div className={`${isLoaded ? "animate-fade-in" : "opacity-0"}`} style={{ animationDelay: "500ms" }}>
             <h2 className="text-3xl sm:text-5xl font-bold bg-gradient-to-r from-gray-900 via-purple-600 to-blue-600 bg-clip-text text-transparent mb-6 gradient-animation">
-              "学び続け、創り続ける"
+              学び続け、創り続ける
             </h2>
             <p className="text-lg sm:text-xl text-gray-600 leading-relaxed max-w-3xl mx-auto">
               技術を通じて人々の生活をより良くしたい。 そんな想いを胸に、日々学習と開発に取り組んでいます。
