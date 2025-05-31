@@ -4,12 +4,13 @@ import { Inter } from "next/font/google"
 import "./globals.css"
 import Header from "./components/layouts/header/Header"
 import Footer from "./components/layouts/footer/Footer"
+import ScrollToTop from "./components/utils/ScrollToTop"
 
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Your Website",
-  description: "Welcome to our website",
+  title: "TeRoom",
+  description: "佐藤照仁のポートフォリオサイト",
 }
 
 export default function RootLayout({
@@ -25,6 +26,7 @@ export default function RootLayout({
           <main className="flex-grow">{children}</main>
           <Footer />
         </div>
+        <ScrollToTop />
       </body>
     </html>
   )

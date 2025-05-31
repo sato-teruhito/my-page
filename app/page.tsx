@@ -38,6 +38,15 @@ export default function HomePage() {
       gradient: "from-purple-500 to-pink-500",
       year: "2024",
       imageUrl: null, // 画像がない場合はnull
+      // 画像を使用する場合の例:
+      // imageUrl: "/images/projects/learning-management-system.jpg"
+      // 画像フォルダ構造:
+      // public/
+      //   images/
+      //     projects/
+      //       learning-management-system.jpg
+      //       data-dashboard.jpg
+      //       portfolio-site.jpg
     },
     {
       title: "データ分析ダッシュボード",
@@ -46,6 +55,7 @@ export default function HomePage() {
       gradient: "from-blue-500 to-indigo-500",
       year: "2024",
       imageUrl: null,
+      // imageUrl: "/images/projects/data-dashboard.jpg"
     },
     {
       title: "ポートフォリオサイト",
@@ -54,6 +64,7 @@ export default function HomePage() {
       gradient: "from-emerald-500 to-teal-500",
       year: "2024",
       imageUrl: null,
+      // imageUrl: "/images/projects/portfolio-site.jpg"
     },
   ]
 
@@ -71,6 +82,9 @@ export default function HomePage() {
               <div className="text-6xl sm:text-8xl mb-4">📸</div>
               <p className="text-lg sm:text-xl font-medium">自分を表す写真がここに入ります</p>
               <p className="text-sm sm:text-base opacity-80 mt-2">横長の画像推奨</p>
+              {/* ヒーロー画像を使用する場合:
+                  public/images/hero/main-hero.jpg として保存し、
+                  backgroundImage: `url('/images/hero/main-hero.jpg')` で指定 */}
             </div>
           </div>
 
@@ -129,16 +143,16 @@ export default function HomePage() {
             {engineeringPrinciples.map((principle, index) => (
               <div
                 key={principle.title}
-                className={`group bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 ${isLoaded ? "animate-fade-in" : "opacity-0"}`}
+                className={`group bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all-300 product-card ${isLoaded ? "animate-fade-in" : "opacity-0"}`}
                 style={{ animationDelay: `${800 + index * 100}ms` }}
               >
                 <div className="text-center">
                   <div
-                    className={`w-16 h-16 bg-gradient-to-r ${principle.gradient} rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300`}
+                    className={`w-16 h-16 bg-gradient-to-r ${principle.gradient} rounded-2xl flex items-center justify-center mx-auto mb-6 icon-hover`}
                   >
                     <span className="text-2xl">{principle.icon}</span>
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-4 group-hover:text-purple-600 transition-colors duration-200">
+                  <h3 className="text-xl font-bold text-gray-900 mb-4 group-hover:text-purple-600 transition-all-200">
                     {principle.title}
                   </h3>
                   <p className="text-gray-600 leading-relaxed">{principle.description}</p>
@@ -196,16 +210,16 @@ export default function HomePage() {
             ].map((area, index) => (
               <div
                 key={area.title}
-                className={`group bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 ${isLoaded ? "animate-fade-in" : "opacity-0"}`}
+                className={`group bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all-300 product-card ${isLoaded ? "animate-fade-in" : "opacity-0"}`}
                 style={{ animationDelay: `${1400 + index * 100}ms` }}
               >
                 <div className="text-center">
                   <div
-                    className={`w-16 h-16 bg-gradient-to-r ${area.gradient} rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300`}
+                    className={`w-16 h-16 bg-gradient-to-r ${area.gradient} rounded-2xl flex items-center justify-center mx-auto mb-4 icon-hover`}
                   >
                     <span className="text-2xl">{area.icon}</span>
                   </div>
-                  <h3 className="text-lg font-bold text-gray-900 mb-3 group-hover:text-purple-600 transition-colors duration-200">
+                  <h3 className="text-lg font-bold text-gray-900 mb-3 group-hover:text-purple-600 transition-all-200">
                     {area.title}
                   </h3>
                   <p className="text-sm text-gray-600 leading-relaxed">{area.description}</p>
@@ -238,7 +252,7 @@ export default function HomePage() {
             {recentWorks.map((work, index) => (
               <div
                 key={work.title}
-                className={`group bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 ${isLoaded ? "animate-fade-in" : "opacity-0"}`}
+                className={`group bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all-300 product-card ${isLoaded ? "animate-fade-in" : "opacity-0"}`}
                 style={{ animationDelay: `${1600 + index * 100}ms` }}
               >
                 <div className="h-48 relative overflow-hidden">
@@ -251,8 +265,8 @@ export default function HomePage() {
                       <div className="absolute inset-0 bg-black bg-opacity-30 group-hover:bg-opacity-20 transition-opacity duration-300"></div>
                     </div>
                   ) : (
-                    // 画像がない場合はグラデーション
-                    <div className={`w-full h-full bg-gradient-to-r ${work.gradient} relative`}>
+                    // 画像がない場合はグラデーション（確実に表示されるように修正）
+                    <div className={`w-full h-full bg-gradient-to-br ${work.gradient} relative`}>
                       <div className="absolute inset-0 bg-black bg-opacity-20 group-hover:bg-opacity-10 transition-opacity duration-300"></div>
                     </div>
                   )}
@@ -276,11 +290,11 @@ export default function HomePage() {
                   </div>
                 </div>
                 <div className="p-6">
-                  <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-purple-600 transition-colors duration-200">
+                  <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-purple-600 transition-all-200">
                     {work.title}
                   </h3>
                   <p className="text-gray-600 mb-4 leading-relaxed">{work.description}</p>
-                  <button className="text-purple-600 font-medium hover:text-purple-800 transition-colors duration-200 group-hover:translate-x-1 transform inline-block">
+                  <button className="text-purple-600 font-medium hover:text-purple-800 transition-all-200 button-hover inline-block">
                     詳細を見る →
                   </button>
                 </div>
@@ -291,7 +305,7 @@ export default function HomePage() {
           <div className="text-center mt-12">
             <a
               href="/pages/products"
-              className={`inline-flex items-center px-8 py-4 text-lg font-semibold text-purple-600 border-2 border-purple-600 rounded-2xl hover:bg-purple-600 hover:text-white transition-all duration-300 transform hover:scale-105 ${isLoaded ? "animate-fade-in" : "opacity-0"}`}
+              className={`inline-flex items-center px-8 py-4 text-lg font-semibold text-purple-600 border-2 border-purple-600 rounded-2xl hover:bg-purple-600 hover:text-white transition-all-300 button-hover ${isLoaded ? "animate-fade-in" : "opacity-0"}`}
               style={{ animationDelay: "1900ms" }}
             >
               すべての作品を見る

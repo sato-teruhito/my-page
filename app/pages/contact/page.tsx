@@ -21,7 +21,8 @@ export default function ContactPage() {
       icon: "💬",
       title: "SNS",
       description: "SNSでもお気軽にご連絡ください",
-      contact: "https://www.instagram.com/teru_31_dq/",
+      contact: "@teru_31_dq",
+      link: "https://www.instagram.com/teru_31_dq/",
       gradient: "from-purple-500 to-pink-500",
     },
     {
@@ -143,7 +144,18 @@ export default function ContactPage() {
                           {method.title}
                         </h3>
                         <p className="text-sm text-gray-600 mb-2">{method.description}</p>
-                        <p className="text-purple-600 font-medium">{method.contact}</p>
+                        {method.link ? (
+                          <a
+                            href={method.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-purple-600 font-medium hover:text-purple-800 transition-colors duration-200 break-all"
+                          >
+                            {method.contact}
+                          </a>
+                        ) : (
+                          <p className="text-purple-600 font-medium break-all">{method.contact}</p>
+                        )}
                       </div>
                     </div>
                   </div>

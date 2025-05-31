@@ -6,6 +6,7 @@ import { useState, useEffect } from "react"
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [currentMessageIndex, setCurrentMessageIndex] = useState(0)
+  const [isMessageVisible, setIsMessageVisible] = useState(false)
 
   const messages = [
     "学び続ける日々",
@@ -17,14 +18,27 @@ export default function Header() {
   ]
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentMessageIndex((prev) => {
-        const nextIndex = (prev + 1) % messages.length
-        return nextIndex
-      })
-    }, 2500) // 2.5秒ごとに切り替え
+    const messageInterval = setInterval(() => {
+      // フェードアウト
+      setIsMessageVisible(false)
 
-    return () => clearInterval(interval)
+      setTimeout(() => {
+        // 次のメッセージに切り替え
+        setCurrentMessageIndex((prev) => (prev + 1) % messages.length)
+
+        setTimeout(() => {
+          // フェードイン
+          setIsMessageVisible(true)
+        }, 500) // 0.5秒待機後にフェードイン
+      }, 500) // 0.5秒でフェードアウト完了
+    }, 4000) // 4秒ごとにサイクル
+
+    // 初回表示
+    setTimeout(() => {
+      setIsMessageVisible(true)
+    }, 1000)
+
+    return () => clearInterval(messageInterval)
   }, [messages.length])
 
   const toggleMenu = () => {
@@ -39,35 +53,27 @@ export default function Header() {
   ]
 
   return (
-    <header className="bg-white/80 backdrop-blur-md border-b border-gray-200/50 sticky top-0 z-50">
+    <header className="bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 border-b border-gray-700 sticky top-0 z-50 shadow-lg">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           {/* ロゴ（左側） */}
           <div className="flex-shrink-0">
             <Link href="/" className="flex items-center group">
-              <div className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent group-hover:from-purple-600 group-hover:to-pink-600 transition-all duration-500 transform group-hover:scale-105">
+              <div className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent logo-hover">
                 ☀ TeRoom 💫
               </div>
             </Link>
           </div>
 
           {/* 動的メッセージ（中央） */}
-          <div className="hidden lg:flex flex-1 justify-center mx-8 max-w-xs">
-            <div className="relative h-6 overflow-hidden bg-gray-50 rounded-full px-4 flex items-center">
+          <div className="flex flex-1 justify-center mx-4 sm:mx-8 max-w-xs">
+            <div className="relative h-6 flex items-center justify-center">
               <div
-                className="absolute left-4 right-4 flex flex-col transition-transform duration-700 ease-in-out"
-                style={{
-                  transform: `translateY(-${currentMessageIndex * 24}px)`,
-                }}
+                className={`text-xs sm:text-sm text-gray-300 font-medium whitespace-nowrap transition-opacity duration-500 ease-in-out ${
+                  isMessageVisible ? "opacity-100" : "opacity-0"
+                }`}
               >
-                {[...messages, ...messages].map((message, index) => (
-                  <div
-                    key={index}
-                    className="h-6 flex items-center justify-center text-xs text-gray-700 font-medium whitespace-nowrap"
-                  >
-                    {message}
-                  </div>
-                ))}
+                {messages[currentMessageIndex]}
               </div>
             </div>
           </div>
@@ -78,7 +84,7 @@ export default function Header() {
               <Link
                 key={item.label}
                 href={item.href}
-                className="nav-underline relative text-gray-600 hover:text-gray-900 px-3 py-2 text-sm font-medium transition-all duration-300 rounded-lg transform hover:scale-105 hover:bg-gray-50"
+                className="relative text-gray-300 hover:text-white px-3 py-2 text-sm font-medium transition-all-300 rounded-lg hover-scale-105 hover:bg-gray-700/50 nav-underline-white"
               >
                 {item.label}
               </Link>
@@ -89,7 +95,7 @@ export default function Header() {
           <div className="md:hidden">
             <button
               onClick={toggleMenu}
-              className="inline-flex items-center justify-center p-2 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-100 transition-colors duration-200"
+              className="inline-flex items-center justify-center p-2 rounded-md text-gray-300 hover:text-white hover:bg-gray-700 transition-all-200"
               aria-expanded="false"
             >
               <span className="sr-only">メニューを開く</span>
@@ -109,12 +115,12 @@ export default function Header() {
         {/* モバイルメニュー */}
         {isMenuOpen && (
           <div className="md:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1 bg-white border-t border-gray-200 animate-fade-in">
+            <div className="px-2 pt-2 pb-3 space-y-1 bg-gray-800 border-t border-gray-700 animate-fade-in">
               {navItems.map((item) => (
                 <Link
                   key={item.label}
                   href={item.href}
-                  className="block px-3 py-2 text-base font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-md transition-colors duration-200"
+                  className="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 rounded-md transition-all-200"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {item.label}

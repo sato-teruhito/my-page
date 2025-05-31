@@ -12,15 +12,17 @@ const blogPosts = [
     category: "技術",
     readTime: "5分",
     gradient: "from-blue-500 to-purple-600",
+    imageUrl: null, // 画像がない場合はnull
   },
   {
     id: 2,
-    title: "デザイン��ステムの構築方法",
+    title: "デザインシステムの構築方法",
     excerpt: "スケーラブルなデザインシステムを構築するためのベストプラクティスとツールの選び方について解説します。",
     date: "2024年1月12日",
     category: "デザイン",
     readTime: "8分",
     gradient: "from-pink-500 to-rose-600",
+    imageUrl: null,
   },
   {
     id: 3,
@@ -30,6 +32,7 @@ const blogPosts = [
     category: "開発",
     readTime: "12分",
     gradient: "from-emerald-500 to-teal-600",
+    imageUrl: null,
   },
   {
     id: 4,
@@ -39,6 +42,7 @@ const blogPosts = [
     category: "UX",
     readTime: "6分",
     gradient: "from-orange-500 to-red-600",
+    imageUrl: null,
   },
   {
     id: 5,
@@ -48,6 +52,7 @@ const blogPosts = [
     category: "最適化",
     readTime: "10分",
     gradient: "from-indigo-500 to-blue-600",
+    imageUrl: null,
   },
   {
     id: 6,
@@ -57,6 +62,7 @@ const blogPosts = [
     category: "アクセシビリティ",
     readTime: "7分",
     gradient: "from-violet-500 to-purple-600",
+    imageUrl: null,
   },
 ]
 
@@ -90,40 +96,54 @@ export default function BlogPage() {
           {blogPosts.map((post, index) => (
             <article
               key={post.id}
-              className={`card-hover group bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100 animate-fade-in opacity-0`}
+              className={`product-card group bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100 animate-fade-in opacity-0`}
               style={{
                 animationDelay: `${index * 100}ms`,
                 animationFillMode: "forwards",
                 opacity: visiblePosts.includes(post.id) ? 1 : 0,
-                transition: "opacity 0.5s ease-in-out, transform 0.3s ease-out",
+                transition: "opacity 0.5s ease-in-out",
               }}
               onMouseEnter={() => setHoveredCard(post.id)}
               onMouseLeave={() => setHoveredCard(null)}
             >
-              <div className={`h-48 bg-gradient-to-r ${post.gradient} relative overflow-hidden`}>
-                <div className="absolute inset-0 bg-black bg-opacity-20 transition-opacity duration-300 group-hover:bg-opacity-10"></div>
-                <div className="absolute top-4 left-4 transform transition-all duration-300 group-hover:scale-110">
+              <div className="h-48 relative overflow-hidden">
+                {post.imageUrl ? (
+                  // 画像がある場合
+                  <div
+                    className="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-300"
+                    style={{ backgroundImage: `url(${post.imageUrl})` }}
+                  >
+                    <div className="absolute inset-0 bg-black bg-opacity-20 transition-opacity duration-300 group-hover:bg-opacity-10"></div>
+                  </div>
+                ) : (
+                  // 画像がない場合はグラデーション
+                  <div className={`w-full h-full bg-gradient-to-br ${post.gradient} relative`}>
+                    <div className="absolute inset-0 bg-black bg-opacity-20 transition-opacity duration-300 group-hover:bg-opacity-10"></div>
+                  </div>
+                )}
+
+                <div className="absolute top-4 left-4 transform transition-all-300 icon-hover">
                   <span className="bg-white bg-opacity-90 text-gray-800 px-3 py-1 rounded-full text-sm font-medium shadow-lg">
                     {post.category}
                   </span>
                 </div>
                 <div
-                  className={`absolute bottom-4 right-4 text-white text-sm font-medium transition-all duration-300 ${hoveredCard === post.id ? "transform translate-y-[-2px]" : ""}`}
+                  className={`absolute bottom-4 right-4 text-white text-sm font-medium transition-all-300 ${hoveredCard === post.id ? "transform translate-y-[-2px]" : ""}`}
                 >
                   {post.readTime}
                 </div>
               </div>
               <div className="p-6">
-                <div className="text-sm text-gray-500 mb-3 transition-colors duration-200 group-hover:text-gray-600">
+                <div className="text-sm text-gray-500 mb-3 transition-all-200 group-hover:text-gray-600">
                   {post.date}
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-all duration-300 transform group-hover:translate-x-1">
+                <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-all-300">
                   {post.title}
                 </h3>
-                <p className="text-gray-600 mb-4 leading-relaxed transition-colors duration-200 group-hover:text-gray-700">
+                <p className="text-gray-600 mb-4 leading-relaxed transition-all-200 group-hover:text-gray-700">
                   {post.excerpt}
                 </p>
-                <button className="button-hover inline-flex items-center text-blue-600 font-medium hover:text-blue-800 transition-all duration-300">
+                <button className="button-hover inline-flex items-center text-blue-600 font-medium hover:text-blue-800 transition-all-300">
                   続きを読む
                   <svg
                     className={`ml-2 w-4 h-4 transition-transform duration-300 ${hoveredCard === post.id ? "transform translate-x-2" : ""}`}

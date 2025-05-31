@@ -15,18 +15,21 @@ export default function AboutPage() {
       title: "和歌山大学大学院 システム工学研究科",
       description: "機械学習とデータサイエンスを専攻し、研究に取り組んでいます。",
       gradient: "from-blue-500 to-purple-500",
+      icon: "🎓",
     },
     {
       year: "2023 - 現在",
       title: "add. メンバー",
       description: "学生団体add.でWebアプリケーション開発やイベント企画に参加しています。",
       gradient: "from-purple-500 to-pink-500",
+      icon: "👥",
     },
     {
       year: "2020 - 2024",
       title: "和歌山大学 システム工学部",
       description: "情報通信システム学科でプログラミングとシステム設計の基礎を学びました。",
       gradient: "from-emerald-500 to-teal-500",
+      icon: "🏫",
     },
   ]
 
@@ -105,6 +108,9 @@ export default function AboutPage() {
                     <div className="text-4xl mb-2">📷</div>
                     <p className="text-sm">顔写真</p>
                     <p className="text-xs opacity-70">後で追加予定</p>
+                    {/* 顔写真を使用する場合:
+                        public/images/profile/profile-photo.jpg として保存し、
+                        <img src="/images/profile/profile-photo.jpg" alt="佐藤照仁" className="w-full h-full object-cover rounded-2xl" /> */}
                   </div>
                 </div>
               </div>
@@ -140,33 +146,45 @@ export default function AboutPage() {
           </div>
         </div>
 
-        {/* 経歴セクション */}
+        {/* 経歴セクション - 新しいデザイン */}
         <div
           className={`bg-white rounded-2xl shadow-lg p-8 mb-12 ${isLoaded ? "animate-fade-in" : "opacity-0"}`}
           style={{ animationDelay: "400ms" }}
         >
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-8">経歴</h2>
-          <div className="space-y-6">
-            {experiences.map((exp, index) => (
-              <div
-                key={index}
-                className={`group p-6 rounded-xl border border-gray-200 hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 ${isLoaded ? "animate-fade-in" : "opacity-0"}`}
-                style={{ animationDelay: `${500 + index * 100}ms` }}
-              >
-                <div className="flex items-start space-x-4">
-                  <div className={`w-4 h-4 rounded-full bg-gradient-to-r ${exp.gradient} mt-2 flex-shrink-0`}></div>
-                  <div className="flex-1">
-                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
-                      <h3 className="text-lg font-semibold text-gray-900 group-hover:text-purple-600 transition-colors duration-200">
+          <div className="relative">
+            {/* タイムライン */}
+            <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-500 via-purple-500 to-teal-500"></div>
+
+            <div className="space-y-8">
+              {experiences.map((exp, index) => (
+                <div
+                  key={index}
+                  className={`relative flex items-start space-x-6 group ${isLoaded ? "animate-fade-in" : "opacity-0"}`}
+                  style={{ animationDelay: `${500 + index * 100}ms` }}
+                >
+                  {/* アイコン */}
+                  <div
+                    className={`relative z-10 w-16 h-16 rounded-2xl bg-gradient-to-r ${exp.gradient} flex items-center justify-center text-2xl shadow-lg group-hover:scale-110 transition-transform duration-300`}
+                  >
+                    {exp.icon}
+                  </div>
+
+                  {/* コンテンツ */}
+                  <div className="flex-1 bg-gray-50 rounded-2xl p-6 group-hover:bg-white group-hover:shadow-lg transition-all duration-300">
+                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-3">
+                      <h3 className="text-xl font-bold text-gray-900 group-hover:text-purple-600 transition-colors duration-200">
                         {exp.title}
                       </h3>
-                      <span className="text-sm text-gray-500 font-medium">{exp.year}</span>
+                      <span className="text-sm font-semibold text-gray-500 bg-white px-3 py-1 rounded-full shadow-sm">
+                        {exp.year}
+                      </span>
                     </div>
                     <p className="text-gray-600 leading-relaxed">{exp.description}</p>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
 
@@ -246,7 +264,7 @@ export default function AboutPage() {
 
         {/* 趣味セクション */}
         <div
-          className={`bg-white rounded-2xl shadow-lg p-8 ${isLoaded ? "animate-fade-in" : "opacity-0"}`}
+          className={`bg-white rounded-2xl shadow-lg p-8 mb-12 ${isLoaded ? "animate-fade-in" : "opacity-0"}`}
           style={{ animationDelay: "800ms" }}
         >
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-8">趣味</h2>
@@ -270,9 +288,10 @@ export default function AboutPage() {
             ))}
           </div>
         </div>
+
         {/* 実績・受賞歴セクション */}
         <div
-          className={`bg-white rounded-2xl shadow-lg p-8 mt-12 ${isLoaded ? "animate-fade-in" : "opacity-0"}`}
+          className={`bg-white rounded-2xl shadow-lg p-8 ${isLoaded ? "animate-fade-in" : "opacity-0"}`}
           style={{ animationDelay: "1000ms" }}
         >
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-8">実績・受賞歴</h2>
