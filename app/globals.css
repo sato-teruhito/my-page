@@ -1,4 +1,6 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 /* CSS変数定義（shadcn/uiカラーシステム） */
 @layer base {
@@ -48,15 +50,11 @@
   }
 
   * {
-    border-color: hsl(var(--border));
-    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-    transition-duration: 150ms;
+    @apply border-border;
   }
 
   body {
-    background-color: hsl(var(--background));
-    color: hsl(var(--foreground));
+    @apply bg-background text-foreground;
   }
 
   html {
@@ -186,146 +184,129 @@
     border-radius: calc(var(--radius) - 4px);
   }
 
-  /* カスタムグラデーション（Tailwind CSS 4対応） */
-  .gradient-blue-purple {
-    background: linear-gradient(135deg, #3b82f6, #8b5cf6);
-  }
-
-  .gradient-purple-pink {
-    background: linear-gradient(135deg, #8b5cf6, #ec4899);
-  }
-
-  .gradient-emerald-teal {
-    background: linear-gradient(135deg, #10b981, #14b8a6);
-  }
-
-  .gradient-blue-indigo {
-    background: linear-gradient(135deg, #3b82f6, #6366f1);
-  }
-
-  .gradient-pink-rose {
-    background: linear-gradient(135deg, #ec4899, #f43f5e);
-  }
-
-  .gradient-orange-red {
-    background: linear-gradient(135deg, #f97316, #ef4444);
-  }
-
-  .gradient-indigo-purple {
-    background: linear-gradient(135deg, #6366f1, #8b5cf6);
-  }
-
-  .gradient-green-blue {
-    background: linear-gradient(135deg, #22c55e, #3b82f6);
-  }
-
-  .gradient-yellow-orange {
-    background: linear-gradient(135deg, #eab308, #f97316);
-  }
-
-  .gradient-violet-purple {
-    background: linear-gradient(135deg, #8b5cf6, #a855f7);
-  }
-
   /* カードホバーエフェクト */
   .card-hover {
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    @apply transition-all duration-300 ease-out;
     transform: translateZ(0);
   }
 
   .card-hover:hover {
-    transform: translateY(-0.5rem);
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    @apply -translate-y-2 shadow-2xl;
   }
 
   /* ボタンホバーエフェクト */
   .button-hover {
-    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    @apply transition-all duration-200 ease-out;
     transform: translateZ(0);
   }
 
   .button-hover:hover {
-    transform: scale(1.05);
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    @apply scale-105 shadow-lg;
   }
 
   /* ロゴホバーエフェクト */
   .logo-hover {
-    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    @apply transition-all duration-500 ease-out;
   }
 
   .logo-hover:hover {
-    transform: scale(1.05);
+    @apply scale-105;
   }
 
   /* ナビゲーションアンダーライン */
   .nav-underline {
-    position: relative;
-    overflow: hidden;
+    @apply relative overflow-hidden;
   }
 
   .nav-underline::after {
     content: "";
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    width: 0;
-    height: 2px;
-    background: linear-gradient(90deg, #3b82f6, #8b5cf6);
-    transition: all 0.3s ease;
+    @apply absolute bottom-0 left-1/2 w-0 h-0.5 bg-gradient-to-r from-blue-500 to-purple-500 transition-all duration-300 ease-out;
     transform: translateX(-50%);
   }
 
   .nav-underline:hover::after {
-    width: 100%;
+    @apply w-full;
   }
 
   /* 白いナビゲーションアンダーライン（ヘッダー用） */
   .nav-underline-white {
-    position: relative;
-    overflow: hidden;
+    @apply relative overflow-hidden;
   }
 
   .nav-underline-white::after {
     content: "";
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    width: 0;
-    height: 2px;
-    background: linear-gradient(90deg, #60a5fa, #a78bfa);
-    transition: all 0.3s ease;
+    @apply absolute bottom-0 left-1/2 w-0 h-0.5 bg-gradient-to-r from-blue-400 to-purple-400 transition-all duration-300 ease-out;
     transform: translateX(-50%);
   }
 
   .nav-underline-white:hover::after {
-    width: 100%;
+    @apply w-full;
+  }
+
+  /* プロダクトカードホバーエフェクト */
+  .product-card {
+    @apply transition-all duration-300 ease-out;
+    transform: translateZ(0);
+  }
+
+  .product-card:hover {
+    @apply -translate-y-2 shadow-2xl;
+  }
+
+  /* アイコンホバーエフェクト */
+  .icon-hover {
+    @apply transition-transform duration-200 ease-out;
+  }
+
+  .icon-hover:hover {
+    @apply scale-110;
+  }
+
+  /* グラデーションクラス */
+  .gradient-blue-purple {
+    @apply bg-gradient-blue-purple;
+  }
+
+  .gradient-purple-pink {
+    @apply bg-gradient-purple-pink;
+  }
+
+  .gradient-emerald-teal {
+    @apply bg-gradient-emerald-teal;
+  }
+
+  .gradient-blue-indigo {
+    @apply bg-gradient-blue-indigo;
+  }
+
+  .gradient-pink-rose {
+    @apply bg-gradient-pink-rose;
+  }
+
+  .gradient-orange-red {
+    @apply bg-gradient-orange-red;
+  }
+
+  .gradient-indigo-purple {
+    @apply bg-gradient-indigo-purple;
+  }
+
+  .gradient-green-blue {
+    @apply bg-gradient-green-blue;
+  }
+
+  .gradient-yellow-orange {
+    @apply bg-gradient-yellow-orange;
+  }
+
+  .gradient-violet-purple {
+    @apply bg-gradient-violet-purple;
   }
 
   /* グラデーションアニメーション */
   .gradient-animation {
     background-size: 200% 200%;
     animation: gradientShift 3s ease infinite;
-  }
-
-  /* プロダクトカードホバーエフェクト */
-  .product-card {
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    transform: translateZ(0);
-  }
-
-  .product-card:hover {
-    transform: translateY(-0.5rem);
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-  }
-
-  /* アイコンホバーエフェクト */
-  .icon-hover {
-    transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  .icon-hover:hover {
-    transform: scale(1.1);
   }
 }
 

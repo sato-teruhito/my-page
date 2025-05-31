@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect, useState } from "react"
+import Image from "next/image"
 
 export default function HomePage() {
   const [isLoaded, setIsLoaded] = useState(false)
@@ -66,7 +67,7 @@ export default function HomePage() {
           style={{ animationDelay: "100ms" }}
         >
           {/* ヒーロー画像 */}
-          <div
+          {/*<div
             className="w-full h-full bg-cover bg-center"
             style={{
               backgroundImage:
@@ -74,7 +75,13 @@ export default function HomePage() {
             }}
             role="img"
             aria-label="和歌山の美しい自然風景"
-          ></div>
+          ></div>*/}
+          <Image
+            src="/images/hero/main-hero.jpg"
+            alt="和歌山の美しい自然風景"
+            fill
+            className="object-cover"
+          />
 
           {/* オーバーレイ */}
           <div className="absolute inset-0 bg-black bg-opacity-40"></div>
