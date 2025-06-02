@@ -16,6 +16,7 @@ const works = [
     sourceCodeUrl: "https://github.com/sato-teruhito/my-page",
     projectUrl: "https://my-page-flame.vercel.app/",
     status: "in-progress",
+    imageUrl: "../images/projects/portfolio.jpg",
   },
   {
     id: 2,
@@ -29,6 +30,7 @@ const works = [
     sourceCodeUrl: "https://github.com/sato-teruhito/research7",
     projectUrl: null,
     status: "completed",
+    imageUrl: "../images/projects/devil.jpg",
   },
   {
     id: 3,
@@ -43,6 +45,7 @@ const works = [
     sourceCodeUrl: "https://github.com/sato-teruhito/HoverMemo",
     projectUrl: null,
     status: "in-progress",
+    imageUrl: "../images/projects/pump.jpg",
   },
   {
     id: 4,
@@ -56,6 +59,7 @@ const works = [
     sourceCodeUrl: "https://github.com/sato-teruhito/bulletin-board",
     projectUrl: null,
     status: "paused",
+    imageUrl: "../images/projects/bulletin-board.jpg",
   },
   {
     id: 5,
@@ -69,6 +73,7 @@ const works = [
     sourceCodeUrl: "https://github.com/sato-teruhito/shift-management-linebot",
     projectUrl: null,
     status: "paused",
+    imageUrl: "../images/projects/shift.jpg",
   },
   {
     id: 6,
@@ -82,6 +87,7 @@ const works = [
     sourceCodeUrl: null,
     projectUrl: "https://unityroom.com/games/sdgs-quest_0923",
     status: "completed",
+    imageUrl: "../images/projects/sdgs.jpg",
   },
   {
     id: 7,
@@ -95,6 +101,7 @@ const works = [
     sourceCodeUrl: "https://github.com/sato-teruhito/ichibankuji",
     projectUrl: null,
     status: "completed",
+    imageUrl: "../images/projects/ichibankuji.jpg",
   },
   {
     id: 8,
@@ -108,6 +115,7 @@ const works = [
     sourceCodeUrl: null,
     projectUrl: null,
     status: "completed",
+    imageUrl: "../images/projects/java-ensyu.jpg",
   },
 ]
 
@@ -175,7 +183,17 @@ export default function WorksPage() {
                 </div>
               )}
 
-              <div className={`h-48 ${work.gradient} relative overflow-hidden`}>
+              <div className="h-48 relative overflow-hidden">
+                {work.imageUrl ? (
+                  <img
+                    src={work.imageUrl}
+                    alt={work.title}
+                    className="w-full h-full object-cover"
+                  />
+                ) : (
+                  <div className={`w-full h-full ${work.gradient}`} />
+                )}
+
                 <div className="absolute inset-0 bg-black bg-opacity-10 transition-opacity duration-300 group-hover:bg-opacity-5"></div>
                 <div className="absolute top-4 left-4 space-y-2">
                   <span className="bg-white bg-opacity-90 text-gray-800 px-3 py-1 rounded-full text-sm font-medium">
