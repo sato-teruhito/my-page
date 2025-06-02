@@ -1,15 +1,70 @@
+"use client"
+
 import Link from "next/link"
+import { useEffect, useState } from "react"
 
 export default function Footer() {
+  const [currentTime, setCurrentTime] = useState("")
+  const [funMessage, setFunMessage] = useState("")
+
+  const funMessages = [
+    "今日もコードと向き合う一日でした ☕",
+    "バグは友達、エラーは先生 🐛",
+    "console.log('Hello, World!') 👋",
+    "今日学んだことを明日に活かそう 📚",
+    "一行一行、丁寧にコードを書いています ✨",
+    "デバッグ中...しばらくお待ちください 🔍",
+    "新しい技術にワクワクしています 🚀",
+    "コーヒーとコードの相性は最高です ☕",
+    "今日もGitにcommitしました 📝",
+    "エラーを見つけた時の達成感は格別です 🎯",
+  ]
+
+  useEffect(() => {
+    // 現在時刻を更新
+    const updateTime = () => {
+      const now = new Date()
+      const timeString = now.toLocaleTimeString("ja-JP", {
+        hour: "2-digit",
+        minute: "2-digit",
+      })
+      setCurrentTime(timeString)
+    }
+
+    // ランダムなメッセージを選択
+    const randomMessage = funMessages[Math.floor(Math.random() * funMessages.length)]
+    setFunMessage(randomMessage)
+
+    updateTime()
+    const interval = setInterval(updateTime, 60000) // 1分ごとに更新
+
+    return () => clearInterval(interval)
+  }, [])
+
   return (
     <footer className="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white relative overflow-hidden">
       {/* 背景の装飾 */}
       <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 to-purple-600/10"></div>
       <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500"></div>
 
+      {/* トップに戻るボタン */}
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-center py-4 border-b border-gray-700">
+          <button
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            className="flex items-center space-x-2 bg-gray-800 hover:bg-gray-700 text-white px-6 py-3 rounded-full transition-all-300 hover-scale-105 shadow-lg"
+          >
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
+            </svg>
+            <span className="text-sm font-medium">トップに戻る</span>
+          </button>
+        </div>
+      </div>
+
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="py-12">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* プロフィール */}
             <div className="col-span-1 md:col-span-2">
               <Link href="/" className="flex items-center mb-4 group">
@@ -18,7 +73,8 @@ export default function Footer() {
                 </div>
               </Link>
               <p className="text-gray-300 text-sm leading-relaxed max-w-md mb-6">
-                和歌山大学大学院でシステム工学を学ぶ学生です。 エンジニアを目指して日々学習と開発に取り組んでいます。
+                エンジニアを志す、ただのしがない学生のポートフォリオサイトです<br/>
+                立派なエンジニアになるまでの軌跡を描いていければと思っています
               </p>
 
               {/* ソーシャルリンク */}
@@ -99,23 +155,33 @@ export default function Footer() {
                 </li>
               </ul>
             </div>
+          </div>
 
-            {/* 学習中の技術 */}
-            <div>
-              <h3 className="text-lg font-semibold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent mb-4">
-                学習中の技術
-              </h3>
-              <ul className="space-y-2 text-sm text-gray-300">
-                <li>React / Next.js</li>
-                <li>TypeScript</li>
-                <li>Python</li>
-                <li>Supabase</li>
-              </ul>
+          {/* 遊び心セクション */}
+          <div className="mt-8 pt-6 border-t border-gray-700">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {/* 現在時刻 */}
+              <div className="bg-gray-800/50 rounded-xl p-4 border border-gray-700">
+                <h4 className="text-sm font-semibold text-gray-300 mb-2 flex items-center">
+                  <span className="text-lg mr-2">🕐</span>
+                  現在時刻
+                </h4>
+                <p className="text-blue-400 font-mono text-lg">{currentTime}</p>
+              </div>
+
+              {/* 今日のひとこと */}
+              <div className="bg-gray-800/50 rounded-xl p-4 border border-gray-700">
+                <h4 className="text-sm font-semibold text-gray-300 mb-2 flex items-center">
+                  <span className="text-lg mr-2">💭</span>
+                  今日のひとこと
+                </h4>
+                <p className="text-purple-400 text-sm">{funMessage}</p>
+              </div>
             </div>
           </div>
 
           {/* コピーライト */}
-          <div className="mt-12 pt-8 border-t border-gray-700">
+          <div className="mt-8 pt-6 border-t border-gray-700">
             <p className="text-center text-gray-400 text-sm">© 2024 Sato Teruhito. All rights reserved. Made with ❤️</p>
           </div>
         </div>

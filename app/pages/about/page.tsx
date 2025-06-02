@@ -45,8 +45,6 @@ export default function AboutPage() {
     backend: [
       { name: "Python", level: 1, color: "from-yellow-500 to-orange-500" },
       { name: "Node.js", level: 3, color: "from-green-600 to-green-800" },
-      { name: "FastAPI", level: 0, color: "from-teal-600 to-cyan-600" },
-      { name: "PostgreSQL", level: 0, color: "from-blue-700 to-indigo-700" },
       { name: "Supabase", level: 2, color: "from-green-700 to-emerald-700" },
     ],
     tools: [
@@ -126,7 +124,11 @@ export default function AboutPage() {
                 </div>
                 <div>
                   <h3 className="text-lg font-semibold text-gray-900">在籍</h3>
-                  <p className="text-gray-600">和歌山大学大学院<br/>システム工学研究科</p>
+                  <p className="text-gray-600">
+                    和歌山大学大学院
+                    <br />
+                    システム工学研究科
+                  </p>
                 </div>
                 <div>
                   <h3 className="text-lg font-semibold text-gray-900">所属団体</h3>
@@ -140,8 +142,8 @@ export default function AboutPage() {
               <h3 className="text-lg font-semibold text-gray-900 mb-4">自己紹介</h3>
               <p className="text-gray-600 leading-relaxed">
                 和歌山大学大学院でシステム工学を学ぶ学生です。
-                エンジニアを目指して、Web開発や機械学習の分野で日々学習と実践を重ねています。
-                学生団体add.では、チームでの開発経験を積み、技術力向上に努めています。
+                エンジニアを目指して、Webアプリケーション開発を中心に日々学習と実践を重ねています。
+                学生団体add。では、チームでの開発経験を積み、技術力向上に努めています。
               </p>
             </div>
           </div>
@@ -185,6 +187,60 @@ export default function AboutPage() {
                   </div>
                 </div>
               ))}
+            </div>
+          </div>
+        </div>
+
+        {/* 自分の強みセクション */}
+        <div
+          className={`bg-white rounded-2xl shadow-lg p-8 mb-12 ${isLoaded ? "animate-fade-in" : "opacity-0"}`}
+          style={{ animationDelay: "550ms" }}
+        >
+          <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-8">自分の強み</h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="space-y-6">
+              <div className="group p-4 rounded-xl bg-gradient-to-r from-blue-50 to-purple-50 border border-blue-200 hover:shadow-md transition-all duration-300">
+                <h3 className="text-lg font-semibold text-gray-900 mb-2 flex items-center">
+                  <span className="text-xl mr-3">🎯</span>
+                  問題解決能力
+                </h3>
+                <p className="text-gray-600 text-sm leading-relaxed">
+                  複雑な課題を分析し、段階的にアプローチすることで効率的な解決策を見つけることができます。
+                </p>
+              </div>
+
+              <div className="group p-4 rounded-xl bg-gradient-to-r from-green-50 to-teal-50 border border-green-200 hover:shadow-md transition-all duration-300">
+                <h3 className="text-lg font-semibold text-gray-900 mb-2 flex items-center">
+                  <span className="text-xl mr-3">🚀</span>
+                  学習意欲
+                </h3>
+                <p className="text-gray-600 text-sm leading-relaxed">
+                  新しい技術や手法に対する強い好奇心を持ち、継続的に学習し続けることができます。
+                </p>
+              </div>
+            </div>
+
+            <div className="space-y-6">
+              <div className="group p-4 rounded-xl bg-gradient-to-r from-purple-50 to-pink-50 border border-purple-200 hover:shadow-md transition-all duration-300">
+                <h3 className="text-lg font-semibold text-gray-900 mb-2 flex items-center">
+                  <span className="text-xl mr-3">🤝</span>
+                  コミュニケーション
+                </h3>
+                <p className="text-gray-600 text-sm leading-relaxed">
+                  チームでの開発において、技術的な内容を分かりやすく説明し、円滑な協力関係を築けます。
+                </p>
+              </div>
+
+              <div className="group p-4 rounded-xl bg-gradient-to-r from-orange-50 to-red-50 border border-orange-200 hover:shadow-md transition-all duration-300">
+                <h3 className="text-lg font-semibold text-gray-900 mb-2 flex items-center">
+                  <span className="text-xl mr-3">💡</span>
+                  創造性
+                </h3>
+                <p className="text-gray-600 text-sm leading-relaxed">
+                  既存の枠にとらわれず、ユーザーの視点に立った新しいアイデアを生み出すことができます。
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -346,9 +402,9 @@ export default function AboutPage() {
             </h3>
             <ul className="text-gray-600 space-y-2 text-sm">
               <li>• 基本情報技術者試験の取得</li>
-              <li>• 情報処理学会での研究発表</li>
+              <li>• 学会での研究発表</li>
               <li>• 個人開発による技術力向上</li>
-              <li>• チーム開発による実務経験</li>
+              <li>• チーム開発経験</li>
               <li>• 修士研究</li>
             </ul>
           </div>

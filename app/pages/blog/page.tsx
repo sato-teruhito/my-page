@@ -1,79 +1,23 @@
 "use client"
 
 import { useState, useEffect } from "react"
-
-const blogPosts = [
-  {
-    id: 1,
-    title: "Next.js 15の新機能を徹底解説",
-    excerpt:
-      "最新のNext.js 15で追加された革新的な機能について詳しく解説します。パフォーマンスの向上とDXの改善について。",
-    date: "2024年1月15日",
-    category: "技術",
-    readTime: "5分",
-    gradient: "gradient-blue-purple",
-    imageUrl: null,
-  },
-  {
-    id: 2,
-    title: "デザインシステムの構築方法",
-    excerpt: "スケーラブルなデザインシステムを構築するためのベストプラクティスとツールの選び方について解説します。",
-    date: "2024年1月12日",
-    category: "デザイン",
-    readTime: "8分",
-    gradient: "gradient-pink-rose",
-    imageUrl: null,
-  },
-  {
-    id: 3,
-    title: "TypeScriptで型安全なAPIを作る",
-    excerpt: "TypeScriptを使用してエンドツーエンドで型安全なAPIを構築する方法とベストプラクティスを紹介します。",
-    date: "2024年1月10日",
-    category: "開発",
-    readTime: "12分",
-    gradient: "gradient-emerald-teal",
-    imageUrl: null,
-  },
-  {
-    id: 4,
-    title: "UXデザインの最新トレンド2024",
-    excerpt: "2024年に注目すべきUXデザインのトレンドと、ユーザー体験を向上させるための実践的なアプローチを解説。",
-    date: "2024年1月8日",
-    category: "UX",
-    readTime: "6分",
-    gradient: "gradient-orange-red",
-    imageUrl: null,
-  },
-  {
-    id: 5,
-    title: "パフォーマンス最適化の実践",
-    excerpt: "Webアプリケーションのパフォーマンスを劇的に改善するための具体的な手法とツールを実例とともに紹介。",
-    date: "2024年1月5日",
-    category: "最適化",
-    readTime: "10分",
-    gradient: "gradient-indigo-purple",
-    imageUrl: null,
-  },
-  {
-    id: 6,
-    title: "アクセシビリティを考慮した開発",
-    excerpt: "すべてのユーザーが使いやすいWebサイトを作るためのアクセシビリティガイドラインと実装方法について。",
-    date: "2024年1月3日",
-    category: "アクセシビリティ",
-    readTime: "7分",
-    gradient: "gradient-violet-purple",
-    imageUrl: null,
-  },
-]
+import Link from "next/link"
+import { getBlogPosts, type BlogPost } from "../../../lib/blogData"
 
 export default function BlogPage() {
-  const [hoveredCard, setHoveredCard] = useState<number | null>(null)
-  const [visiblePosts, setVisiblePosts] = useState<number[]>([])
+  const [hoveredCard, setHoveredCard] = useState<string | null>(null)
+  const [visiblePosts, setVisiblePosts] = useState<string[]>([])
+  const [blogPosts, setBlogPosts] = useState<BlogPost[]>([])
 
   useEffect(() => {
+    // ブログデータを取得
+    const posts = getBlogPosts()
+    setBlogPosts(posts)
+
+    // アニメーション用の表示制御
     const timer = setTimeout(() => {
-      const allPosts = blogPosts.map((post) => post.id)
-      setVisiblePosts(allPosts)
+      const allPostIds = posts.map((post) => post.id)
+      setVisiblePosts(allPostIds)
     }, 100)
 
     return () => clearTimeout(timer)
@@ -87,7 +31,7 @@ export default function BlogPage() {
             Blog
           </h1>
           <p className="mt-6 text-xl leading-8 text-gray-600 max-w-2xl mx-auto animate-slide-up animation-delay-200">
-            最新の技術トレンドやデザインのインサイトをお届けします
+            気になる最新技術から日記まで，日常のアレコレをただ綴れればと
           </p>
         </div>
 
@@ -140,7 +84,22 @@ export default function BlogPage() {
                 <p className="text-gray-600 mb-4 leading-relaxed transition-all-200 group-hover:text-gray-700">
                   {post.excerpt}
                 </p>
-                <button className="button-hover inline-flex items-center text-blue-600 font-medium hover:text-blue-800 transition-all-300">
+
+                {/* タグ表示 */}
+                {post.tags && post.tags.length > 0 && (
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {post.tags.slice(0, 3).map((tag, tagIndex) => (
+                      <span key={tagIndex} className="bg-gray-100 text-gray-600 px-2 py-1 rounded-md text-xs">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                )}
+
+                <Link
+                  href={`/pages/blog/${post.id}`}
+                  className="button-hover inline-flex items-center text-blue-600 font-medium hover:text-blue-800 transition-all-300"
+                >
                   続きを読む
                   <svg
                     className={`ml-2 w-4 h-4 transition-transform duration-300 ${hoveredCard === post.id ? "transform translate-x-2" : ""}`}
@@ -150,7 +109,7 @@ export default function BlogPage() {
                   >
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>
-                </button>
+                </Link>
               </div>
             </article>
           ))}

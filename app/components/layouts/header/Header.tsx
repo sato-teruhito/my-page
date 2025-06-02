@@ -9,12 +9,17 @@ export default function Header() {
   const [isMessageVisible, setIsMessageVisible] = useState(false)
 
   const messages = [
-    "学び続ける日々",
-    "コードと向き合う",
+    "\"Hello, World\" からすべては始まる",
     "新しい技術に挑戦",
-    "チームで創る未来",
+    "バグと一緒に起きて、エラーと寝る",
     "ユーザーを想う開発",
-    "成長への探求心",
+    "404 Not Found... 俺のやる気",
+    "波 「 Javaーン 」",
+    "動いたら正義 壊れたら仕様",
+    "バグ深き 隣は何を commitぞ",
+    "コード ココ ドーコ？",
+    "♪ 君の前前前commitから バグを探し始めたよ",
+    "console.log('動け')で動いたときの恐怖",
   ]
 
   useEffect(() => {
@@ -47,7 +52,7 @@ export default function Header() {
 
   const navItems = [
     { href: "/pages/about", label: "About" },
-    { href: "/pages/products", label: "Works" },
+    { href: "/pages/products", label: "Products" },
     { href: "/pages/blog", label: "Blog" },
     { href: "/pages/contact", label: "Contact" },
   ]
