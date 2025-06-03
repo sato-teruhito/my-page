@@ -21,7 +21,7 @@ const works = [
   {
     id: 2,
     title: "反対意見生成AI機能による遠隔会議支援システム",
-    description: "卒業研究にて作成。ファシリテーションのテクニックの1つである悪魔の代弁者の振る舞いをAIに担わせることで、少数派意見の促進を目的としている。",
+    description: "卒業研究にて作成。ファシリテーションのテクニックの1つである悪魔の代弁者の振る舞いをAIに担わせることで、少数派意見の促進を図る。",
     technologies: ["JavaScript", "HTML/CSS", "OpenAI API", "WebRTC", "Tailwind CSS"],
     category: "Web Application",
     year: "2024-2025",
@@ -38,7 +38,7 @@ const works = [
     description:
       "閲覧したサイトにメモを残すことで、要不要を一目で判断可能に。Chromeの拡張機能として開発。公開に向け調整中。",
     technologies: ["JavaScript", "HTML/CSS", "Figma"],
-    category: "Portfolio",
+    category: "chrome extension",
     year: "2025",
     gradient: "gradient-emerald-teal",
     featured: false,
