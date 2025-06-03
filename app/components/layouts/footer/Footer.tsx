@@ -134,7 +134,7 @@ export default function Footer() {
                     href="/pages/products"
                     className="text-gray-300 hover:text-white transition-all-300 hover:translate-x-2 hover-scale-105 transform inline-block hover:bg-gray-700/30 px-2 py-1 rounded-lg"
                   >
-                    Works
+                    Products
                   </Link>
                 </li>
                 <li>
